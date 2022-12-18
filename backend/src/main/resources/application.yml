@@ -1,0 +1,16 @@
+spring:
+  profiles:
+    active:
+      - secret
+  jpa:
+    show_sql: true
+    hibernate:
+      dialect: org.hibernate.dialect.PostgreSQLDialect
+      ddl-auto: create
+    generate-ddl: true
+    properties:
+      hibernate:
+        format_sql: true
+  sql:
+    init:
+      platform: postgres
