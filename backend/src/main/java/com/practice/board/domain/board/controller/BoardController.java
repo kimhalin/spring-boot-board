@@ -13,7 +13,6 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
@@ -22,7 +21,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.UUID;
+import java.util.List;
 
 @RestController
 @RequestMapping("api/v1/boards")
@@ -61,11 +60,10 @@ public class BoardController {
     }
 
     @GetMapping
-//    public ResponseEntity<Page<BasicBoardResponseDto>> getList( // User ID로 Pagination
-//                                                            @RequestParam(value = "user-id") Long userId,
-//                                                            @PageableDefault(size = 20, sort = "createdOn", direction = Sort.Direction.DESC) final Pageable pageable
-//    ) {
-//        return ResponseEntity
-//                .ok(service.findRequestsByUserId(userId, pageable).map(mapper::toResponseDto));
-//    }
+    public ResponseEntity<List<BasicBoardResponseDto>> getList(
+            @PageableDefault(size = 20, sort = "createdOn", direction = Sort.Direction.DESC) final Pageable pageable
+    ) {
+        return ResponseEntity
+                .ok(boardService.findAll(pageable).getContent());
+    }
 }
