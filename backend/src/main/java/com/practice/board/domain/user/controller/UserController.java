@@ -12,6 +12,7 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,6 +31,7 @@ public class UserController {
     private final UserService userService;
     private final UserMapper userMapper;
 
+    @Tag(name = "USER API")
     @Operation(summary = "post user", description = "user 생성하기")
     @ApiResponses({
             @ApiResponse(responseCode = "201", description = "CREATED", content = @Content(schema = @Schema(implementation = BasicUserResponseDto.class)))
@@ -40,11 +42,11 @@ public class UserController {
             @Parameter(name = "nickname")
     })
     @PostMapping
-    public ResponseEntity<BasicUserResponseDto> create(@Valid @RequestBody UserCreateRequestDto dto) {
+    public ResponseEntity<String> create(@Valid @RequestBody UserCreateRequestDto dto) {
         User entity = userService.create(dto);
         BasicUserResponseDto response = userMapper.toUserResponseDto(entity);
         return ResponseEntity
                 .status(HttpStatus.CREATED)
-                .body(response);
+                .body("Success");
     }
 }

@@ -19,4 +19,9 @@ public class Board extends BaseTimeEntity {
 
     @ManyToOne
     private User user;
+
+    private String title;
+
+    private String content;
+
 }
