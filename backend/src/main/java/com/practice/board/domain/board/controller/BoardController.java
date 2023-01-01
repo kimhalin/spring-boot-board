@@ -50,7 +50,6 @@ public class BoardController {
                 .body("success");
     }
 
-
     @GetMapping("/{id}")
     public ResponseEntity<BasicBoardResponseDto> getOne(@Valid @PathVariable Long id) {
         BasicBoardResponseDto response = boardMapper.toBoardResponseDto(boardService.findById(id));

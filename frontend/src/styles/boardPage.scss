@@ -1,0 +1,32 @@
+.boardList {
+    background-color: white;
+}
+
+.boardTable {
+    font-size: .9rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,.25);
+    width: 100%;
+    height: 10rem;
+    border-collapse: collapse;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.tableCenter {
+    text-align: center;
+}
+
+th {
+    text-align: center;
+}
+
+thead {
+    font-weight: bold;
+    color: #fff;
+    background-color: #845fff;
+}
+
+td {
+    border: 1px solid rgba(0,0,0,.1);
+    padding: .3rem;
+}
